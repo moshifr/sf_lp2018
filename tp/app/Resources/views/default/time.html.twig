@@ -1,9 +1,7 @@
-<ul>
-    <li><a href="{{ url('time_index') }}">Time index</a></li>
-    <li><a href="{{ url('color_index', {'color': 'red'}) }}">
-            Color index</a></li>
-</ul>
+{%  extends 'base.html.twig' %}
 
+{%  block body %}
 La date est : {{ time }}
 <br>
 La date twig est : {{ 'now'|date('d/m/Y H:i:s') }}
+{% endblock %}

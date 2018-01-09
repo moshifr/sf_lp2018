@@ -1,7 +1,15 @@
-
-<ul>
-    <li><a href="{{ url('time_index') }}">Time index</a></li>
-    <li><a href="{{ url('color_index', {'color': 'red'}) }}">Color index</a></li>
-</ul>
-
-Ma couleur est : {{ color }}
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .color {
+            color: {{ color }}
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    Ma couleur est : <span class="color">{{ color }}</span>
+    {% if color == "red" %}
+        <p class="color"><strong>Attention risque de virus.</strong></p>
+    {% endif %}
+{% endblock %}
