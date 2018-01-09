@@ -3,7 +3,7 @@
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
-
+.idea/
 # Email spool folder
 /app/spool/*
 
@@ -28,7 +28,7 @@
 
 # Assets and user uploads
 /web/bundles/
-/web/uploads/
+#/web/uploads/
 
 # PHPUnit
 /app/phpunit.xml
