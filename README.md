@@ -189,8 +189,10 @@ php bin/console server:run
 ```
 Et la console vous donnera l'url en local en général : http://localhost:8000
 
-Exo 1 - [Corrigé](https://github.com/moshifr/sf_lp2018/commit/e451f6c4e996ea7983b655dbafb407bcda5db3fd)
+Exo 1
 ------
+[Corrigé](https://github.com/moshifr/sf_lp2018/commit/e451f6c4e996ea7983b655dbafb407bcda5db3fd)
+
 * Installer Symfony
 * Check des requirements
 * Vérifier que le site fonctionne
