@@ -189,7 +189,7 @@ php bin/console server:run
 ```
 Et la console vous donnera l'url en local en général : http://localhost:8000
 
-Exo 1
+Exo 1 - [Corrigé](https://github.com/moshifr/sf_lp2018/commit/e451f6c4e996ea7983b655dbafb407bcda5db3fd)
 ------
 * Installer Symfony
 * Check des requirements
@@ -286,9 +286,9 @@ $this->generateurl('nom_de_la_route', $variables);
 
 Ou sous TWIG on a deux fonctions : 
 ```
-{{ path('nom_route', {'page': 'toto', 'vars2': 'titi'}) }}
+{{ path('nom_route', {'page': 'toto', 'vars2': 'titi'} ) }}
 
-{{ url('nom_route', {'page': 'toto', 'vars2': 'titi'}) }}
+{{ url('nom_route', {'page': 'toto', 'vars2': 'titi'} ) }}
 ```
 
 Controller & Action
