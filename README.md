@@ -36,6 +36,7 @@ _moshi_
    * [Vues (TWIG)](#vues-twig)
       * [Affichage](#affichage)
       * [Logique](#logique)
+      * [Héritage](#heritage)
       * [Exos 3](#exos-3)
 
 
@@ -359,7 +360,28 @@ Logique
 	* {% if %} {% else %} {%endif %} : condition
 	* {% for item in items %}{%endfor} : foreach
 	* {% set foo='foo' %} : set des variables
- 
+	
+Héritage 
+------
+Twig permet l'héritage de template via un extends dans les templates enfants :
+```
+{% extends 'base.html.twig' %}
+```
+
+Dans les templates mère on définit des "block" que l'on vient surcharger dans les templates enfants :
+```
+{% block body %}
+toto
+{% endblock %}
+```
+
+On peut également reprendre le block parent via 
+```
+{% parent() %}
+```
+
+On crée donc des templates mère assez flexibles pour pouvoir en hériter et surcharger les différents blocks
+
 Exos 3 
 ------
 * Utiliser l'héritage pour mettre le menu dans un seul fichier mais visible sur les 2 pages.
