@@ -333,6 +333,7 @@ http://symfony.com/doc/3.4/templating/namespaced_paths.html
 
 Exo 2 
 -------
+[Corrigé](https://github.com/moshifr/sf_lp2018/commit/76853e53b85355ec276ef3efcb6d65a7057913e2)
 * Créer 2 nouvelles pages :
 	* http://localhost/time/now : afficher la date l'heure  minute et seconde
 	* http://localhost/color/blue : affiche "blue" à l'écran dynamiquement
