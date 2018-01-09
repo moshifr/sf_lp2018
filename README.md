@@ -385,6 +385,7 @@ On crée donc des templates mère assez flexibles pour pouvoir en hériter et su
 
 Exos 3 
 ------
+[Corrigé](https://github.com/moshifr/sf_lp2018/commit/879713a4c63242b43d020d704f9f14bf9a036215)
 * Utiliser l'héritage pour mettre le menu dans un seul fichier mais visible sur les 2 pages.
 * Intégrer bootstrap (CDN)
 * Pour la page /color  afficher le mot de la même couleur dynamiquement ("bleu" en bleu) (en CSS)
