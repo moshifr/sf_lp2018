@@ -378,7 +378,7 @@ toto
 
 On peut également reprendre le block parent via 
 ```
-{% parent() %}
+{{ parent() }}
 ```
 
 On crée donc des templates mère assez flexibles pour pouvoir en hériter et surcharger les différents blocks
