@@ -18,4 +18,25 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/time/now", name="time_index")
+     */
+    public function timeAction(){
+
+        return $this->render('default/time.html.twig',
+            ['time' => strftime('le %A %d/%m/%Y %H:%M:%S') ]
+        );
+    }
+
+    /**
+     * @Route("/color/{color}", name="color_index", requirements={"color": "[a-zA-Z]+"})
+     */
+    public function colorAction( $color ){
+
+        return $this->render('default/color.html.twig',
+            ['color' => $color ]
+        );
+    }
+
 }
