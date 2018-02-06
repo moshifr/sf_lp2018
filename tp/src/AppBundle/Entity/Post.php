@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,12 @@ class Post
      */
     private $title;
 
+    /**
+     * @var $category PostCategory
+     *
+     * @ORM\ManyToOne(targetEntity="PostCategory")
+     */
+    private $category;
 
     /**
      * @var \DateTime
@@ -157,4 +164,28 @@ class Post
         return $this->enable;
     }
 
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\PostCategory $category
+     *
+     * @return Post
+     */
+    public function setCategory(\AppBundle\Entity\PostCategory $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\PostCategory
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

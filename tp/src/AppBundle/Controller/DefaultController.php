@@ -91,11 +91,13 @@ class DefaultController extends Controller
     public function demoPostAction(){
         // on instantie post
         $post = new Post();
+        $category = $this->getDoctrine()->getRepository('AppBundle:PostCategory')->find( 1 );
         // on lui modifie le titre
-        $post->setTitle('Post 2');
+        $post->setTitle('Post 3');
         $post->setDateCreated( new \DateTime() );
         $post->setEnable(true);
         $post->setContent('Lorem ipsum...');
+        $post->setCategory( $category );
         // récupération du manager entité
         $em = $this->getDoctrine()->getManager();
         // persist
@@ -127,6 +129,19 @@ class DefaultController extends Controller
         // sauvegarde
         $em->flush();
         return new Response("Sauvegarde OK sur : ".$category->getId() ) ;
+    }
+
+    /**
+     * @Route("/demo/delete/{post}", name="demo_post_delete")
+     */
+    public function deletePostAction(Post $post){
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+
+        $this->addFlash('success', 'Votre suppression a bien été effectuée.');
+
+        return $this->redirectToRoute('demo_page_listing');
     }
 
 }
