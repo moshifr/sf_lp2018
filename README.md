@@ -698,6 +698,9 @@ La notion de propriétaire est toujours du côté des Many ; Il faudra donc choi
 
 Exo 5
 ------
+
+[Corrigé](https://github.com/moshifr/sf_lp2018/commit/0041fcb9e993d81093f6623a4b625ff744ac1eae)
+
 Créer la liaison entre Post et Catégorie.
 Modifier la page de génération de Post pour créer un article "Post 3" avec la relation vers "Catégorie 1" ; 
 ==> La catégorie de Post 3 sera Catégorie 1.
