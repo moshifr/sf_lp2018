@@ -603,6 +603,8 @@ $this->getDoctrine()->getRepository('MIMBundle:Post')->maRequete('test');
 
 Exo 4
 ------
+
+[Corrigé](https://github.com/moshifr/sf_lp2018/commit/02591baea321c8f2db66ff5cb9adba48a4142316)
 Créer une entité "Post" avec :
 - title string 255 
 - dateCreated datetime
