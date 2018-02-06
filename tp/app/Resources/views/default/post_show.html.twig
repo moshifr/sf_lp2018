@@ -1,0 +1,11 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+    <a href="{{ url('demo_page_listing') }}" class="btn btn-notice">Retour</a>
+        <h1>{{ post.title }}</h1>
+        <div style="font-style: italic">
+            {{ post.dateCreated|date('d/m/Y') }}
+        </div>
+        <div>{{ post.content }}</div>
+        <hr>
+{% endblock %}

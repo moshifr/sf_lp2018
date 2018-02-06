@@ -1,0 +1,15 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+    {% for post in posts %}
+        <h1>{{ post.title }}
+            <a href="{{ url('demo_post_show', {post: post.getId()}) }}" style="float: right" class="pull-right right">Edit</a>
+        </h1>
+        <div style="font-style: italic">
+            {{ post.dateCreated|date('d/m/Y') }}
+        </div>
+        <div>{{ post.content }}</div>
+
+        <hr>
+    {% endfor %}
+{% endblock %}
