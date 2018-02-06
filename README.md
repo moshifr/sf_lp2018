@@ -5,39 +5,64 @@ TP Symfony Licence MIM 2018
 
 _moshi_
 
+   * [Introduction](README.md#introduction)
+      * [Présentation](README.md#présentation)
+      * [Prérequis](README.md#prérequis)
+      * [Objectif de ce cours](README.md#objectif-de-ce-cours)
+      * [Installation](README.md#installation)
+   * [Autour de Symfony](README.md#autour-de-symfony)
+      * [Composer](README.md#composer)
+      * [MVC](README.md#mvc)
+      * [Entité](README.md#entité)
+      * [ORM](README.md#orm)
+      * [Repository](README.md#repository)
+      * [YAML](README.md#yaml)
+      * [Annotation](README.md#annotation)
+      * [Route](README.md#route)
+      * [Bundle](README.md#bundle)
+      * [Environnement](README.md#environnement)
+      * [Profiler](README.md#profiler)
+      * [Arborescence](README.md#arborescence)
+      * [Lancement de l'application](README.md#lancement-de-lapplication)
+      * [Exo 1](README.md#exo-1)
+   * [Routes &amp; Controller](README.md#routes--controller)
+      * [Configs](README.md#configs)
+      * [Annotations](README.md#annotations)
+      * [Variables de routes](README.md#variables-de-routes)
+      * [Génération d'url](README.md#génération-durl)
+      * [Controller &amp; Action](README.md#controller--action)
+      * [Response](README.md#response)
+      * [Exo 2](README.md#exo-2)
+   * [Vues (TWIG)](README.md#vues-twig)
+      * [Affichage](README.md#affichage)
+      * [Logique](README.md#logique)
+      * [Héritage](README.md#héritage)
+      * [Exos 3](README.md#exos-3)
+   * [ORM - Entités - modèles](README.md#orm---entités---modèles)
+      * [Introduction](README.md#introduction-1)
+      * [Mise en application](README.md#mise-en-application)
+      * [Annotations](README.md#annotations-1)
+      * [Modifications de champs et lien base de données](README.md#modifications-de-champs-et-lien-base-de-données)
+      * [ORM](README.md#orm-1)
+      * [Recherche d'entité](README.md#recherche-dentité)
+      * [Exo 4](README.md#exo-4)
+      * [Relations](README.md#relations)
+      * [OneToMany (1..n) - ManyToOne (n..1)](README.md#onetomany-1n---manytoone-n1)
+      * [OneToOne  1..1](README.md#onetoone--11)
+      * [ManyToMany (n..n)](README.md#manytomany-nn)
+      * [Exo 5](README.md#exo-5)
+   * [FORM](README.md#form)
+      * [Introduction](README.md#introduction-2)
+      * [Création](README.md#création)
+      * [TWIG](README.md#twig)
+      * [Action / Request](README.md#action--request)
+      * [Validation](README.md#validation)
+      * [Exos 6](README.md#exos-6)
+      * [Génération de CRUD](README.md#génération-de-crud)
+      * [Exos 7](README.md#exos-7)
+      * [Exos 8](README.md#exos-8)
 
-   * [Introduction](#introduction)
-      * [Présentation](#présentation)
-      * [Prérequis](#prérequis)
-      * [Objectif de ce cours](#objectif-de-ce-cours)
-      * [Installation](#installation)
-   * [Autour de Symfony](#autour-de-symfony)
-      * [Composer](#composer)
-      * [MVC](#mvc)
-      * [Entité](#entité)
-      * [ORM](#orm)
-      * [Repository](#repository)
-      * [Annotation](#annotation)
-      * [Route](#route)
-      * [Bundle](#bundle)
-      * [Environnement](#environnement)
-      * [Profiler](#profiler)
-      * [Arborescence](#arborescence)
-      * [Lancement de l'application](#lancement-de-lapplication)
-      * [Exo 1](#exo-1)
-   * [Routes &amp; Controller](#routes--controller)
-      * [Configs](#configs)
-      * [Annotations](#annotations)
-      * [Variables de routes](#variables-de-routes)
-      * [Génération d'url](#génération-durl)
-      * [Controller &amp; Action](#controller--action)
-      * [Response](#response)
-      * [Exo 2](#exo-2)
-   * [Vues (TWIG)](#vues-twig)
-      * [Affichage](#affichage)
-      * [Logique](#logique)
-      * [Héritage](#heritage)
-      * [Exos 3](#exos-3)
+
 
 
 Introduction
@@ -350,17 +375,17 @@ La syntaxe commence toujours avec {} des accolades
 
 Affichage 
 ------
-* {{ ma_variable }} Pour affiche du texte ou un contenu 
-* {# commentaire #}
-* ~ : concatenation 
-	* {{ 'toto' ~ 'titi' }}
+* ```{{ ma_variable }}``` Pour affiche du texte ou un contenu 
+* ```{# commentaire #}```
+* ```~ : concatenation ```
+	* ```{{ 'toto' ~ 'titi' }}```
 
 Logique 
 --------
-* {% %} permet d'utiliser des logiques tels que :
-	* {% if %} {% else %} {%endif %} : condition
-	* {% for item in items %}{%endfor} : foreach
-	* {% set foo='foo' %} : set des variables
+* ```{% %}``` permet d'utiliser des logiques tels que :
+	* ```{% if %} {% else %} {%endif %} ``` : condition
+	* ```{% for item in items %}{%endfor} ``` : foreach
+	* ```{% set foo='foo' %}```  : set des variables
 	
 Héritage 
 ------
@@ -393,5 +418,443 @@ Exos 3
 * Dans le menu rajouter un lien vers les pages couleurs : red, blue, yellow, pink, violet, salmon en utilisant un foreach
 * Mettre en souligné l'url active
 
-Entités - modèles
+ORM - Entités - modèles
 =====
+Introduction
+---------
+Un ORM (Object Relation Mapper) permet de gérer manipuler et de récupérer des tables de données de la même façon qu'un objet quelconque, donc en gardant le langage PHP. Plus besoin de requête MySQL, PostgresSQL ou autre.
+
+Symfony utilise Doctrine comme ORM dans son système par défaut. Nous allons utiliser Doctrine mais vous pouvez utiliser d'autres systèmes si vous le souhaitez. 
+Doctrine peut-être géré de plusieurs façon : XML, JSON, YAML, PHP et en Annotation nous allons utiliser ce dernier format de données.
+
+Une entité est une des classes PHP utilisées par l'ORM qui se défini via des propriétés PHP (ici en annotation) :
+![Entité](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/entity1.jpeg?raw=true)
+
+Un repository permet la génération de requêtes simples ou complexes et dont le développeur peut modifier à volonté.
+
+Mise en application
+----------
+Pour créer une entité il faut saisir la commande dans le terminal : 
+```
+php bin/console generate:doctrine:entity
+```	
+
+La console vous demandera plusieurs informations comme le nom du bundle dans lequel créer l'entité, le nom de l'entité par exemple : 
+MIMBundle:Post (pour le bundle MIMBundle et le nom d'entité Post )
+Et ensuite les différents champs souhaités dans votre entité / table de façon répétitive.
+Pour finir la saisie et pour réaliser la création du fichier saisissez la touche entrée une dernière fois quand on vous demande le nom du champs
+
+![Entité](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/entity2.jpeg?raw=true)
+
+Le fichier sera créé dans src/MIMBundle/Entity/Post.php
+Un fichier Repository est également créé dans src/MIMBundle/Repository/PostRepository.php
+
+Annotations
+--------
+Notez le use Doctrine\ORM\Mapping as ORM; tout en haut d'en classe entity qui permet l'utilisation des annotations.
+Ces annotations commencent toujours par @ORM par exemple @ORM\Column(type ...) permet de définir le champs suivant et le type de ce dernier.
+@ORM\OneToMany , ManyToOne, OneToOne et ManyToMany se rapportent à des relations entre entités nous y reviendrons.
+
+Modifications de champs et lien base de données
+-----
+
+Pour rajouter des champs il faut créer la propriété avec son annotation et ensuite créer ou générer les getters setters : 
+```
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
+     */
+private $link;
+```	
+```
+php bin/console doctrine:generate:entities MIMBundle:Post
+```
+
+A ce moment la base de données physique n'existe pas ou n'est pas mise à jour nous avons seulement créé son image PHP, pour créer la table ou modifier le schéma de table il faut saisir cette commande : 
+```	
+php bin/console doctrine:schema:update --force # permet de mettre à jour la base de données
+# ou
+php bin/console doctrine:schema:update --dump-sql # permet d'afficher les requêtes qui vont être mises en place pour mettre à jour la base de données
+```	
+
+ORM
+----
+Une fois la base de données mise en place on va pouvoir insérer modifier supprimer et récupérer des informations de la base de données sans saisir de requêtes via des méthodes en initialisant l'entité fraichement créée : 
+
+```	
+// src/AppBundle/Controller/DefaultController.php
+
+/**
+ * @Route("/est", name="test")
+ */
+public function testAction()
+{
+	$post = new Post(); // initialise l'entité
+	$post->setTitle('Mon titre'); // on set les différents champs
+	$post->setEnable(true);
+	$post->setDateCreated(new \Datetime);
+
+	$em = $this->getDoctrine()->getManager(); // on récupère le gestionnaire d'entité
+	$em->persist( $post ); // on déclare une modification de type persist et la génération des différents liens entre entité
+	$em->flush(); // on effectue les différentes modifications sur la base de données 
+	// réelle
+
+	return new Response('Sauvegarde OK sur : ' . $post->getId() );
+}
+
+```	
+Il existe à la place de $em->persist  $em->remove($post); qui permettra de faire une suppression.
+ 
+Ce dernier code effectue une création dans la base de données; pour une modification il suffit de modifier l'instantiation de l'entité de la sorte : 
+```	
+// src/AppBundle/Controller/DefaultController.php
+
+/**
+ * @Route("/est", name="test")
+ */
+public function testAction()
+{
+	$post = $this->getDoctrine()->getRepository('MIMBundle:Post')->find( 1 ); // récupération du post avec id 1 
+	$post->setTitle('Mon titre'); // on set les différents champs
+	$post->setEnable(true);
+	$post->setDateCreated(new \Datetime);
+
+	$em = $this->getDoctrine()->getManager(); // on récupère le gestionnaire d'entité
+	$em->persist( $post ); // on déclare une modification de type persist et la génération des différents liens entre entité
+	$em->flush(); // on effectue les différentes modifications sur la base de données 
+	// réelle
+
+	return new Response('Sauvegarde OK sur : ' . $post->getId() );
+}
+
+```	
+ici on récupère le repository de Post et on récupère l'id 1 ; tout le restant du code reste inchangé.
+
+Recherche d'entité 
+------
+Pour une recherche d'entité on peut utiliser plusieurs méthodes de repository préfète :
+- $->find( $id ); // on récupère qu'un seul élément de l'entité avec l'id $id;
+- $->findAll();  // on récupère toutes les entrées de l'entité concernée
+- $->findBy( $where, $order, $limit, $offset ); // on recherche avec le tableau $where on tri avec le tableau $order on récupère $limit éléments à partir de l'élément $offset.
+- $->findOneBy($where,$order); // on récupère le premier élément respectant le tableau $where et trié avec le tableau $order;
+- $->findByX($search) ; requêtes magiques où X correspond à n'importe quel champs défini dans votre entité 
+- $->findOneByX($search) ;  requêtes magiques  où X correspond à n'importe quel champs défini dans votre entité 
+
+Par exemple findBySlug( 'home' ); ou findByTitle('Bonjour);
+génèrera des requêtes de recherche automatiquement.
+Pour les requêtes avec plusieurs éléments il faudra faire une itération (foreach) ou lister les différents éléments.
+```	
+// Modifications multiples : 
+// src/AppBundle/Controller/DefaultController.php
+/**
+ * @Route("/est", name="test")
+ */
+public function testAction()
+{
+	$posts = $this->getDoctrine()->getRepository('MIMBundle:Post')->findAll(); // récupération de tous les posts
+	$em = $this->getDoctrine()->getManager(); // on récupère le gestionnaire d'entité
+	
+	foreach($posts as $post)
+	{
+		$post->setTitle('Mon titre' . $post->getId() ); // on set les différents champs
+		$em->persist( $post ); // on déclare une modification de type persist et la
+		// génération des différents liens entre entité 
+	}
+
+	$em->flush(); // on effectue les différentes modifications sur la base de données 
+	// réelle
+
+	return new Response('Sauvegarde OK ');
+}
+```
+
+Vous pouvez également générer vos requêtes manuellement pour avoir une requête complexe et précise directement dans le controller mais idéalement il faudrait le placer dans le repository dédié.
+```	
+// src/AppBundle/Repository/Post.php
+
+public function maRequete( $where )
+{
+	// avec querybuilder
+    $queryBuilder = $this->createQueryBuilder("p");
+
+    $queryBuilder->where(' p.title like :w');
+    $queryBuilder->setParameter(':w', '%'.$where.'%');
+    $query = $queryBuilder->getQuery(); // on récupère la requêtes 
+
+   	return $query->getResult(); // on renvoie le résultat
+}
+ public function maRequeteSQL( $where )
+    {
+        // avec requête SQL
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT p from AppBundle:Post p 
+    WHERE p.title like :w');
+
+        $query->setParameter(':w', '%'.$where.'%');
+
+
+        return $query->getResult(); // on renvoie le résultat
+```	
+```	
+// src/AppBundle/Controller/DefautController
+$this->getDoctrine()->getRepository('MIMBundle:Post')->maRequete('test');
+```	
+
+Exo 4
+------
+Créer une entité "Post" avec :
+- title string 255 
+- dateCreated datetime
+- content text
+- enable boolean
+
+Créer une entité "PostCategory" avec : 
+- title string 255
+
+Créer une page qui va sauvegarder une catégorie  avec le nom "Catégorie 1"
+Créer une page qui va sauvegarder un post avec le nom Post 1 à la date courante avec comme contenu Lorem ipsum et en enable à true.
+Créer une page qui va afficher le titre de la catégorie en id 1 et le post en id 1.
+
+Créer un nouveau post identique au premier en changeant le titre.
+Créer une page qui affiche la totalité des entités Post.
+Créer une page qui récupère le Post avec le Titre "Post 1"
+
+Relations
+------
+Plusieurs types de relation existent entre des entités ou tables : 
+- OneToMany (et son inverse ManyToOne)
+- ManyToMany 
+- OneToMany
+
+De plus on notera aussi deux notions : propriétaire et inverse ; Une relation entre deux entités a toujours un propriétaire et un inverse.
+
+Propriétaire : L'entité dite propriétaire contient la référence à l'autre entité et est gérée par défaut par Doctrine ; Aucune recherche particulière n'est à faire pour récupérer la relation propriétaire. (Commentaire vers Article, commentaire contiendra la relation vers article avec un champs article_id par exemple et on pourra récupérer la relation de la sorte : $com->article_id->title )
+L'inverse est la relation inverse il faudrait faire une recherche un peu plus complexe pour récupérer les relations (Article vers Commentaires avec un where par exemple).
+
+Une relation peut être unidirectionnelle ou bidirectionnelle ; Nous utiliserons que la relation unidirectionnelle  dans ce cours. 
+Les relations bidirectionnelles peuvent être gérées automatiquement par Symfony modifiant un peu les entités inverses avec inversedBy et mappedBy.
+
+OneToMany (1..n) - ManyToOne (n..1)
+-------
+
+![OneToMany - ManyToOne](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/onetomany.jpeg?raw=true)
+La relation 1..n définit une dépendance multiple entre 2 entités de sorte que la première peut être liée à plusieurs entités :
+
+- Equipe -> Joueur**s**
+- Utilisateur -> Commande**s**
+- Article -> Commentaire**s**
+
+La notion de propriétaire est toujours du côté des Many. (Joueurs, Commandes, Commentaires)
+
+![OneToMany - ManyToOne](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/onetomany_annotation.jpeg?raw=true)
+
+La relation n..1 est majoritairement l'inverse de 1..n :
+- Joueur**s** -> Equipe
+- Commande**s** -> Utilisateur
+- Commentaire**s** -> Article
+
+La notion de propriétaire est toujours du côté des Many.
+
+OneToOne  1..1
+-----
+La relation 1..1 est peu utilisée mais permet une flexibilité en terme relationnelle très importante. Elle définit une dépendance unique entre 2 entités : 
+- Utilisateur -> Adresse
+- Produit -> Image
+- Commande -> Facture
+
+![OneToOne](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/onetoone.png?raw=true)
+La notion de propriétaire peut être choisit simplement.
+
+```	
+
+    /**
+     * @ORM\OneToOne(targetEntity="Address")
+     */
+    private $address;
+```
+
+ManyToMany (n..n)
+----
+La relation ManyToMany définit une dépendance multiples entre 2 entités de sorte que plusieurs première entités peuvent être liée à plusieurs secondes entités : 
+- Tag**s** -> Article**s**
+- Role**s** -> Utilisateur**s**
+- Projet**s** -> Employe**s**
+
+La notion de propriétaire est toujours du côté des Many ; Il faudra donc choisir celle que l'on souhaite.
+
+![ManyToMany](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/manytomany.jpeg?raw=true)
+
+```	
+    /**
+     * 
+     * @ORM\ManyToMany(targetEntity="User")
+     */
+    private $roles;
+```	
+
+Exo 5
+------
+Créer la liaison entre Post et Catégorie.
+Modifier la page de génération de Post pour créer un article "Post 3" avec la relation vers "Catégorie 1" ; 
+==> La catégorie de Post 3 sera Catégorie 1.
+Modifier la page avec tous les posts pour afficher la catégorie liée à l'article.
+Créer une page qui supprime "Post 1"
+
+En plus : Flash Messages [https://symfony.com/blog/new-in-symfony-3-3-improved-flash-messages ](https://symfony.com/doc/current/controller.html#flash-messages)
+Essayer d'utiliser les flash messages
+Modifier l'entité Post pour ajouter un champ : "excerpt" de type text 
+Créer le getter et setter et mettez à jour la base de données.
+
+FORM
+=====
+Introduction
+-----
+![Form](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/form1.jpeg?raw=true)
+La gestion des formulaire se fait via plusieurs classes PHP qui permettent entre autre : 
+
+- La structure et les propriétés du formulaire se gèrent via FormBuilder et peuvent être réutilisées;
+- On peut créer des classes spécifiques pour chacun de nos formulaires
+- Permet une gestion des validations simplifiée et une sécurité renforcée
+- Permet d'hydrater une entité ou un objet rapidement
+- Gestion de template simple
+
+Création
+-----
+
+On peut créer un Form de 2 façons différentes  :
+- Directement dans un controller 
+- ![Form](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/form1.jpeg?raw=true)
+- Ou via des classes dédiées de type FormType en général dans le répertoire Form du bundle
+- ![Form](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/form2.jpeg?raw=true) 
+
+On utilise la classe FormBuilder accessible avec la méthode 
+```	
+$entite = new Post;
+// ou $entite = $this->getDoctrine()->getRepository('Post')->find(1);
+$this->createFormBuilder( $entite ) 
+```
+dans un controller ; l'argument $entite est l'entité que vous souhaitez hydrater ; l'argument n'est pas obligatoire (pour un formulaire de recherche par exemple)
+
+On peut mettre des champs de formulaire par défaut en modifiant l'entité avant de créer le formulaire et de lier le formulaire à l'entité :
+
+Par exemple
+```	
+$entite = new Post;
+// ou $entite = $this->getDoctrine()->getRepository('Post')->find(1);
+$entite->setTitle('Mon titre forcé');
+$this->createFormBuilder( $entite ) 
+```
+Préremplira le formulaire avec le titre forcé.
+
+Ensuite nous aurons des suites de ->add('nom_du_champs', TypeDeChamps::class, $options);
+Par défaut si vous ne mettez que le nom du champs Symfony se chargera de récupérer un type de champs en fonction du type de champs (string, text, boolean date)
+
+Liste des champs possibles : https://symfony.com/doc/3.4/reference/forms/types.html
+
+Dans une classe dédiée le createFormBuilder est déjà instantié il ne vous reste qu'à rajouter les différents add.
+
+TWIG
+----
+Une fois le formulaire créé et initié il faut renvoyer le tout à TWIG via la méthode :
+```	
+$form->createView();
+```	
+Ensuite nous aurons plusieurs fonctions twig utiles :
+- ```{{ form }}``` permet d'afficher tout le formulaire 
+- ```{{ form_start  }}``` permet de générer la balise ```<form>``` avec les différents attributs
+- ```{{ form_end }}``` permet de générer la fermeture de ```<form>``` avec les différents champs restants non affichés
+- ```{{ form_errors }}``` affiche les erreurs éventuelles du formulaire
+- ```{{ form_widget(mon formulaire.nomduchamps) }} ```affiche le type de champs 
+- ```{{  form_label(mon formulaire.nomduchamps) }}``` affiche le label du champs
+- ```{{ form_row(monformulaire.nomduchamps) }}``` affiche le form_widget et form_label
+- ```{{ form_rest }}``` affiche les champs restants non récupéré précédemment (token de vérification par exemple)
+
+Action / Request
+--------
+Une fois le formulaire créé et affiche via TWIG il faut rajouter un comportement qui va gérer la soumission du formulaire grâce à ces méthodes : 
+- handleRequest($request) permet d'associer les valeurs input à la classe Form précédemment créé
+- isSubmitted() permet de savoir si le formulaire a été envoyé 
+- isValid()  permet de savoir si les données saisies sont valides 
+
+Dans la majorité des cas on va tester si :
+```
+public function newAction(Request $request){
+  //... génération ou récupération du formulaire
+  $form->handleRequest($request); // hydratation du form 
+  if($form->isSubmitted() && $form->isValid()){ // test si le formulaire a été soumis et s'il est valide
+	$em = $this->getDoctrine()->getManager(); // on récupère la gestion des entités
+	$em->persist($post); // on effectue les mise à jours internes
+	$em->flush(); // on effectue la mise à jour vers la base de données
+	return $this->redirectToRoute('show_post', ['id' => $post->getId()]); // on redirige vers la route show_post avec l'id du post créé ou modifié 
+  }
+}
+```	
+
+![Form](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/form3.jpeg?raw=true) 
+
+
+Validation
+-----
+
+Les validations permettent de gérer des contraintes au niveau du formulaire ; Par exemple pour pourra forcer en PHP que le champs email soit bien un email ou que tel champs ne peut pas dépasser tel nombre de caractères, vous trouverez la liste des contraintes basiques sur site site de symfony : 
+http://symfony.com/doc/3.4/validation.html
+Ces contraintes ou assert peuvent être gérée de plusieurs façon XML, JSON, YAML, PHP ou en annotation dans notre cas; il faudra utiliser cette ligne tout en haut du controller : 
+```	
+use Symfony\Component\Validator\Constraints as Assert;
+```	
+Pour ensuite pouvoir utiliser l'annotation : 
+```	
+class Author
+{
+    /**
+     * @Assert\NotBlank()
+     */
+    public $name;
+}
+```	
+Ici on vérifiera que le champs name doit être rempli.
+
+Exos 6 
+------
+Créer un formulaire directement dans DefaultController qui gèrera la création des Post
+Créer un formulaire directement dans DefaultController qui gèrera la modification des Post
+Modifier la page de listing des postes pour rajouter un lien edition et suppression
+Mettre en place les différentes routes pour le backoffice de Post (ajout / modification / suppression / visualisation)
+Déporter le formulaire de gestion de Post vers une classe dédiée Form/PostType.php
+Modifier DefaultController pour utiliser PostType
+Ajouter une validation au formulaire sur le titre qui ne doit pas dépasser 255 caractères
+Afficher le message d'erreur en rouge.
+
+Génération de CRUD
+-----
+Ce que nous venons de faire manuellement peut être généré en ligne de commande par Symfony **:')**
+via la commande : 
+```	
+php bin/console doctrine:generate:crud 
+```	
+On vous demandera le nom de l'entité précédé du nom de bundle,  le chemin pour ce crud et si vous souhaitez avoir les fonction d'édition (ajout/ modification) mettez oui.
+
+On peut également générer seulement les FormType : 
+```	
+php bin/console doctrine:generate:form 
+```	
+
+Exos 7 
+-----
+Générer le CRUD de Post avec l'url /admin/post
+Tester le fonctionnement 
+Rechercher pour mettre en place le template bootstrap pour les Form
+
+
+Exos 8 
+----
+On va créer une page de recherche 
+Modifier le repository de Post pour créer une method search( $word )
+qui recherchera dans le titre et le contenu le mot $word 
+Tips : https://symfony.com/doc/3.4/doctrine.html#querying-for-objects
+Créer une nouvelle page dans le Controller /search/{word}
+Créer le formulaire directement dans le controller sans le lier à une entité 
+A la soumission on va récupérer $form->getData() qui sera notre $_POST
+Pour récupérer la variable $word et utiliser la méthode du repository fraichement créée.
+Pour finalement afficher tout le contenu dans une page de listing.
