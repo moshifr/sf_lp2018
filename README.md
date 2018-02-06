@@ -638,7 +638,7 @@ Les relations bidirectionnelles peuvent être gérées automatiquement par Symfo
 OneToMany (1..n) - ManyToOne (n..1)
 -------
 
-![OneToMany - ManyToOne](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/onetomany.jpeg?raw=true)
+![OneToMany - ManyToOne](https://github.com/moshifr/sf_lp2018/blob/master/images_cours/onetomany.png?raw=true)
 La relation 1..n définit une dépendance multiple entre 2 entités de sorte que la première peut être liée à plusieurs entités :
 
 - Equipe -> Joueur**s**
