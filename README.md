@@ -823,14 +823,15 @@ Ici on vérifiera que le champs name doit être rempli.
 
 Exos 6 
 ------
-Créer un formulaire directement dans DefaultController qui gèrera la création des Post
-Créer un formulaire directement dans DefaultController qui gèrera la modification des Post
-Modifier la page de listing des postes pour rajouter un lien edition et suppression
-Mettre en place les différentes routes pour le backoffice de Post (ajout / modification / suppression / visualisation)
-Déporter le formulaire de gestion de Post vers une classe dédiée Form/PostType.php
-Modifier DefaultController pour utiliser PostType
-Ajouter une validation au formulaire sur le titre qui ne doit pas dépasser 255 caractères
-Afficher le message d'erreur en rouge.
+- Créer un formulaire directement dans DefaultController qui gèrera la création des Post
+- Créer un formulaire directement dans DefaultController qui gèrera la modification des Post
+- Modifier la page de listing des postes pour rajouter un lien edition et suppression
+- Mettre en place les différentes routes pour le backoffice de Post (ajout / modification / suppression / visualisation)
+- Déporter le formulaire de gestion de Post vers une classe dédiée Form/PostType.php
+- Modifier DefaultController pour utiliser PostType
+- Ajouter une validation au formulaire sur le titre qui ne doit pas dépasser 255 caractères
+- Rechercher pour mettre en place le template bootstrap pour les Form
+- Afficher le message d'erreur en rouge.
 
 Génération de CRUD
 -----
@@ -845,22 +846,30 @@ On peut également générer seulement les FormType :
 ```	
 php bin/console doctrine:generate:form 
 ```	
+Attention si vous modifier une entité les FormType ne sont pas générés automatiquement il faudra rajouter manuellement le champs fraichement créé.
 
 Exos 7 
 -----
-Générer le CRUD de Post avec l'url /admin/post
-Tester le fonctionnement 
-Rechercher pour mettre en place le template bootstrap pour les Form
+- Générer le CRUD de Post avec l'url /admin/post
+- Générer le CRUD de PostCategory avec l'url /admin/postcategory
+- Tester le fonctionnement 
+- Mettre les liens dans le menu pour aller sur le listing post et listing postcategory ; mettre en actif si url courante
+- Ajouter un champs image à Post ; ce champs sera un champs d'upload 
+- Mettre en place l'upload Tips : utiliser [VichUploaderBundle](https://github.com/dustin10/VichUploaderBundle)
+- Tester [EasyAdminBundle](https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html)
 
 
 Exos 8 
 ----
-On va créer une page de recherche 
-Modifier le repository de Post pour créer une method search( $word )
+- On va créer une page de recherche 
+- Modifier le repository de Post pour créer une method search( $word )
 qui recherchera dans le titre et le contenu le mot $word 
 Tips : https://symfony.com/doc/3.4/doctrine.html#querying-for-objects
-Créer une nouvelle page dans le Controller /search/{word}
-Créer le formulaire directement dans le controller sans le lier à une entité 
-A la soumission on va récupérer $form->getData() qui sera notre $_POST
-Pour récupérer la variable $word et utiliser la méthode du repository fraichement créée.
-Pour finalement afficher tout le contenu dans une page de listing.
+- Créer une nouvelle page dans le Controller /search/{word}
+- Créer le formulaire directement dans le controller sans le lier à une entité 
+- A la soumission on va récupérer $form->getData() qui sera notre $_POST
+- Pour récupérer la variable $word et utiliser la méthode du repository fraichement créée.
+- Pour finalement afficher tout le contenu dans une page de listing.
+
+
+
