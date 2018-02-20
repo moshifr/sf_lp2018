@@ -4,8 +4,14 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
 use AppBundle\Entity\PostCategory;
+use AppBundle\Form\PostType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -129,6 +135,75 @@ class DefaultController extends Controller
         // sauvegarde
         $em->flush();
         return new Response("Sauvegarde OK sur : ".$category->getId() ) ;
+    }
+
+    /**
+     * @Route("/demo/add/post", name="demo_add_post")
+     */
+    public function demoAddPost(Request $request)
+    {
+        $post = new Post();
+        /*
+                $form = $this->createFormBuilder( $post )
+                    ->add('title', TextType::class, ['label' => 'Mon beau titre', 'attr' => ['class' => '']])
+                    ->add('dateCreated')
+                    ->add('content')
+                    ->add('enable')
+                    //->add('category')
+                    ->add('submit', SubmitType::class)
+                    ->getForm()
+                ;*/
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest( $request );
+        if( $form->isSubmitted() && $form->isValid() ){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist( $post );
+            $em->flush();
+
+            $this->addFlash('success', 'Votre ajout a bien été effectuée.');
+
+            return $this->redirectToRoute('demo_page_listing');
+
+        }
+        return $this->render('default/post_add.html.twig', ['formulaire' => $form->createView()]);
+
+    }
+
+    /**
+     * @Route("/demo/upd/post/{post}", name="demo_upd_post")
+     */
+    public function demoUpdPostAction(Request $request,Post $post)
+    {
+
+//        $post = $this->getDoctrine()->getRepository('AppBundle:Post')->find($post);
+/*
+        $form = $this->createFormBuilder( $post )
+            ->add('title', TextType::class, ['label' => 'Mon beau titre', 'attr' => ['class' => '']])
+            ->add('dateCreated')
+            ->add('content')
+            ->add('enable')
+            //->add('category')
+            ->add('submit', SubmitType::class)
+            ->getForm()
+        ;*/
+
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest( $request );
+        if( $form->isSubmitted() && $form->isValid() ){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist( $post );
+            $em->flush();
+
+            $this->addFlash('success', 'Votre ajout a bien été effectuée.');
+
+            return $this->redirectToRoute('demo_page_listing');
+
+        }
+
+        return $this->render('default/post_add.html.twig', ['formulaire' => $form->createView()]);
+
     }
 
     /**

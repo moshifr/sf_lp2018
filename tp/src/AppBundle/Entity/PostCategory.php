@@ -29,6 +29,10 @@ class PostCategory
     private $title;
 
 
+    public function __toString()
+    {
+        return $this->title;
+        }
     /**
      * Get id
      *

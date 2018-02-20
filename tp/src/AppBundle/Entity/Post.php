@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -26,6 +27,8 @@ class Post
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(min=10, max=155, minMessage="Trop court", maxMessage="Texte trop long")
+     * @Assert\NotBlank(message="Ne peut pas etre vide")
      */
     private $title;
 
@@ -56,6 +59,7 @@ class Post
      * @ORM\Column(name="enable", type="boolean", nullable=true)
      */
     private $enable;
+
 
 
     /**
@@ -188,4 +192,6 @@ class Post
     {
         return $this->category;
     }
+
+
 }
