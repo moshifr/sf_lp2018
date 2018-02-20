@@ -823,6 +823,8 @@ Ici on vérifiera que le champs name doit être rempli.
 
 Exos 6 
 ------
+
+[Corrigé](https://github.com/moshifr/sf_lp2018/tree/7fca30f4a9f1b122b24c5c52176589049313c814)
 - Créer un formulaire directement dans DefaultController qui gèrera la création des Post
 - Créer un formulaire directement dans DefaultController qui gèrera la modification des Post
 - Modifier la page de listing des postes pour rajouter un lien edition et suppression
