@@ -1018,6 +1018,7 @@ Exo 9
 ------
 Nous allons débuter par la partie authentification en créant un formulaire de login qui va permettre de se connecter 
 et pour les identifiants nous allons utiliser in_memory.
+
 Tester le bon fonctionnement de l'access_controls sur toutes les pages admin 
 https://symfony.com/doc/3.4/security.html
 
@@ -1036,8 +1037,11 @@ Comme vous le voyez il faut paramétrer un tas de choses pour que ce soit foncti
 Exo 10
 -----
 Mais si vous voulez laisser un bundle tier s'occuper de tout ce processus il y a [FOSUserBundle]() qui est le plus répandu.
+
 Il est très complet mais forcément moins de flexibilité que si vous gérez tout le process de security.
+
 Nous allons mettre en place un nouveau bundle : [FOSUserBundle](http://symfony.com/doc/current/bundles/FOSUserBundle/index.html).
+
 Overridez également le formulaire de login qui n'est pas au mieux niveau design.
 
 Vous voilà avec un beau backoffice sécurisé.
@@ -1051,9 +1055,13 @@ TP
 Présentation
 -------
 Nombre de TP : 5
+
 Date de rendu maximum : Tout le Lundi 21/05  
+
 Dépot par mail sur moshi@moshi.fr les répertoires app/ src/ et web/ si vous y avez touché (les zip passent pas sur mon gmail apparement, vous pouvez m'envoyer l'url du projet ou un wetransfer)
+
 Critères de notations : Je noterais le code source (php et JS si besoin) seulement ; aucunement le design.
+
 Vous devez réaliser un site vitrine pour le jeu "Tu préfères" : Deux choix s'offrent à vous cliquez pour choisir votre préféré.
 
 Notation
@@ -1062,9 +1070,9 @@ Notation
 Ce site disposera de : 
 - 5 pages 
     - Homepage avec :
-     - **3** une section "Tu préfères" avec deux choix cliquables random (sans notion de catégories) au clic on comptabilise le vote et on renvoie vers la Homepage avec de nouveaux choix avec un message "Votre vote a bien été pris en compte"
-     - **3** un panneau de login (si déjà loggé on affiche le pseudo et un bouton de déconnexion et ses 5 derniers votes)
-     - **1** les 10 derniers votes de tout le monde
+        - **3** une section "Tu préfères" avec deux choix cliquables random (sans notion de catégories) au clic on comptabilise le vote et on renvoie vers la Homepage avec de nouveaux choix avec un message "Votre vote a bien été pris en compte"
+        - **3** un panneau de login (si déjà loggé on affiche le pseudo et un bouton de déconnexion et ses 5 derniers votes)
+        - **1** les 10 derniers votes de tout le monde
     - **1** Présentation : avec un texte lorem non dynamique
     - **3** Recherche : Recherche dans les news 
     - **3** News : page de news avec détails (avec slug dans l'url et non id) et bouton retour 
@@ -1072,7 +1080,8 @@ Ce site disposera de :
         - **3** Reprendre la liste des catégories et afficher le vainqueur de la catégorie.
         - **3** Au clic sur une catégorie on a accès (toujours avec un slug et non id) au top par catégorie : une section "Tu préfères" avec deux choix randoms mais de la catégorie sélectionnée.
 
-Les urls devront être SEO friendly et sans GET parameters
+Les urls devront être SEO friendly et sans GET parameters.
+
 Le backoffice vous est fourni, vous pouvez utiliser tous les bundles que vous souhaitez tant que le site est fonctionnel.
  
  
