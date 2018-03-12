@@ -4,63 +4,77 @@
 TP Symfony Licence MIM 2018
 
 _moshi_
+_moshi@moshi.fr_
 
-   * [Introduction](README.md#introduction)
-      * [Présentation](README.md#présentation)
-      * [Prérequis](README.md#prérequis)
-      * [Objectif de ce cours](README.md#objectif-de-ce-cours)
-      * [Installation](README.md#installation)
-   * [Autour de Symfony](README.md#autour-de-symfony)
-      * [Composer](README.md#composer)
-      * [MVC](README.md#mvc)
-      * [Entité](README.md#entité)
-      * [ORM](README.md#orm)
-      * [Repository](README.md#repository)
-      * [YAML](README.md#yaml)
-      * [Annotation](README.md#annotation)
-      * [Route](README.md#route)
-      * [Bundle](README.md#bundle)
-      * [Environnement](README.md#environnement)
-      * [Profiler](README.md#profiler)
-      * [Arborescence](README.md#arborescence)
-      * [Lancement de l'application](README.md#lancement-de-lapplication)
-      * [Exo 1](README.md#exo-1)
-   * [Routes &amp; Controller](README.md#routes--controller)
-      * [Configs](README.md#configs)
-      * [Annotations](README.md#annotations)
-      * [Variables de routes](README.md#variables-de-routes)
-      * [Génération d'url](README.md#génération-durl)
-      * [Controller &amp; Action](README.md#controller--action)
-      * [Response](README.md#response)
-      * [Exo 2](README.md#exo-2)
-   * [Vues (TWIG)](README.md#vues-twig)
-      * [Affichage](README.md#affichage)
-      * [Logique](README.md#logique)
-      * [Héritage](README.md#héritage)
-      * [Exos 3](README.md#exos-3)
-   * [ORM - Entités - modèles](README.md#orm---entités---modèles)
-      * [Introduction](README.md#introduction-1)
-      * [Mise en application](README.md#mise-en-application)
-      * [Annotations](README.md#annotations-1)
-      * [Modifications de champs et lien base de données](README.md#modifications-de-champs-et-lien-base-de-données)
-      * [ORM](README.md#orm-1)
-      * [Recherche d'entité](README.md#recherche-dentité)
-      * [Exo 4](README.md#exo-4)
-      * [Relations](README.md#relations)
-      * [OneToMany (1..n) - ManyToOne (n..1)](README.md#onetomany-1n---manytoone-n1)
-      * [OneToOne  1..1](README.md#onetoone--11)
-      * [ManyToMany (n..n)](README.md#manytomany-nn)
-      * [Exo 5](README.md#exo-5)
-   * [FORM](README.md#form)
-      * [Introduction](README.md#introduction-2)
-      * [Création](README.md#création)
-      * [TWIG](README.md#twig)
-      * [Action / Request](README.md#action--request)
-      * [Validation](README.md#validation)
-      * [Exos 6](README.md#exos-6)
-      * [Génération de CRUD](README.md#génération-de-crud)
-      * [Exos 7](README.md#exos-7)
-      * [Exos 8](README.md#exos-8)
+   * [Introduction](#introduction)
+      * [Présentation](#présentation)
+      * [Prérequis](#prérequis)
+      * [Objectif de ce cours](#objectif-de-ce-cours)
+      * [Installation](#installation)
+   * [Autour de Symfony](#autour-de-symfony)
+      * [Composer](#composer)
+      * [MVC](#mvc)
+      * [Entité](#entité)
+      * [ORM](#orm)
+      * [Repository](#repository)
+      * [YAML](#yaml)
+      * [Annotation](#annotation)
+      * [Route](#route)
+      * [Bundle](#bundle)
+      * [Environnement](#environnement)
+      * [Profiler](#profiler)
+      * [Arborescence](#arborescence)
+      * [Lancement de l'application](#lancement-de-lapplication)
+      * [Exo 1](#exo-1)
+   * [Routes &amp; Controller](#routes--controller)
+      * [Configs](#configs)
+      * [Annotations](#annotations)
+      * [Variables de routes](#variables-de-routes)
+      * [Génération d'url](#génération-durl)
+      * [Controller &amp; Action](#controller--action)
+      * [Response](#response)
+      * [Exo 2](#exo-2)
+   * [Vues (TWIG)](#vues-twig)
+      * [Affichage](#affichage)
+      * [Logique](#logique)
+      * [Héritage](#héritage)
+      * [Exos 3](#exos-3)
+   * [ORM - Entités - modèles](#orm---entités---modèles)
+      * [Introduction](#introduction-1)
+      * [Mise en application](#mise-en-application)
+      * [Annotations](#annotations-1)
+      * [Modifications de champs et lien base de données](#modifications-de-champs-et-lien-base-de-données)
+      * [ORM](#orm-1)
+      * [Recherche d'entité](#recherche-dentité)
+      * [Exo 4](#exo-4)
+      * [Relations](#relations)
+      * [OneToMany (1..n) - ManyToOne (n..1)](#onetomany-1n---manytoone-n1)
+      * [OneToOne  1..1](#onetoone--11)
+      * [ManyToMany (n..n)](#manytomany-nn)
+      * [Exo 5](#exo-5)
+   * [FORM](#form)
+      * [Introduction](#introduction-2)
+      * [Création](#création)
+      * [TWIG](#twig)
+      * [Action / Request](#action--request)
+      * [Validation](#validation)
+      * [Exos 6](#exos-6)
+      * [Génération de CRUD](#génération-de-crud)
+      * [Exos 7](#exos-7)
+      * [Exos 8](#exos-8)
+   * [Security](#security)
+      * [Authentification - Authorization](#authentification---authorization)
+      * [Firewall](#firewall)
+      * [Providers](#providers)
+      * [Encoders](#encoders)
+      * [Authorisation](#authorisation)
+      * [Roles](#roles)
+      * [Exo 9](#exo-9)
+      * [Form_login](#form_login)
+      * [Exo 10](#exo-10)
+   * [TP](#tp)
+      * [Présentation](#présentation-1)
+      * [Notation](#notation)
 
 
 
@@ -874,4 +888,194 @@ Tips : https://symfony.com/doc/3.4/doctrine.html#querying-for-objects
 - Pour finalement afficher tout le contenu dans une page de listing.
 
 
+Security 
+========
 
+Authentification - Authorization
+-----
+Deux notions majeures interviennent dans la conception de sécurité de Symfony : 
+ - **Authentification** : Qui êtes vous ? ; vous pouvez vous authentifier de plusieurs manières (HTTP authentification, certificat, formulaire de login, API, OAuth etc)
+ - **Authorization** : Avez vous accès à ? ; permet d'autoriser de faire telle ou telle action ou accéder à telle page sans forcément savoir qui vous êtes, utilisateur anonyme par exemple.
+
+De nouvelles notions vont intervenir la première est :
+
+Firewall
+--------
+Un firewall est la porte d'entrée pour le système d'authentification, on définit différents firewall (au minimum 1 seul) qui va permettre de mettre en place le bon système de connexion pour l'url spécifiée via un pattern.
+
+///  app/config/security.yml
+```
+security:
+    firewalls:
+        # désactive l'authentification pour les assets et le profiler
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        # HTTP basic (prompt du navigateur)    : https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate 
+        http_basic:
+            pattern: ^/ # pour toutes les urls 
+            anonymous: ~ # si le client n'est pas encore connecté
+            http_basic: ~ # on utilise la connexion via HTTP  basic
+        # autre méthode de login :  https://symfony.com/doc/current/security/form_login_setup.html    
+        # formulaire_login:
+        #    form_login:
+        #      login_path: login #  route du formulaire 
+        #      check_path: login # route du check si le client est connecté
+        main:
+            anonymous: ~
+```
+
+Providers
+------
+Un provider permet au firewall d'interroger une collection d'utilisateurs/mot de passe ; C'est une sorte de base de tous les utilisateurs avec les mots de passe.
+Il existe deux type par défaut : 
+- in memory : directement dans le fichier security.yml mais du coup les hash des mots de passes sont disponible dans un fichier accessible
+
+```
+security:
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        in_memory:
+            memory:
+              users:
+                toto: {password: toto, roles: 'ROLE_USER'}
+                admin: {password: adminpass, roles: 'ROLE_ADMIN'}
+```
+
+- Entity : N'importe quelle entité qui implémente à minima Symfony\Component\Security\Core\User\UserInterface
+
+Plusieurs providers peuvent fonctionner en même temps par exemple in_memory et entity voire plusieurs entités simultanément.
+http://symfony.com/doc/current/security/entity_provider.html
+
+
+Encoders
+-------
+Un encoder permet de générer des hashs/d'encoder des mots de passe ; le plus connu étant MD5 mais vous pouvez utiliser d'autres encoders tels que : sha1, bcrypt ou plaintext (qui n'encode rien c'est le mot de passe en clair)
+http://symfony.com/doc/current/security/named_encoders.html
+
+Authorisation 
+------
+L'autorisation peut être géré de plusieurs façons :
+- Directement depuis les controllers
+```
+public function hello($name)
+{
+    // The second parameter is used to specify on what object the role is tested.
+    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+    // ...
+}
+```
+via une condition : 
+```
+$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')
+```
+via des annotations : 
+```
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
+/**
+ * @Security("has_role('ROLE_ADMIN')")
+ */
+ public function hello($name)
+```
+
+
+- Depuis les templates 
+```
+{% if is_granted('ROLE_ADMIN') %} {% endif %}
+```
+
+- Depuis le fichier security.yml : les access controls permettent de sécuriser un pattern d'url 
+```
+security:
+    # ...
+    access_control:
+        - { path: ^/admin, roles: ROLE_USER_IP, ip: 127.0.0.1 }
+        - { path: ^/admin, roles: ROLE_USER_HOST, host: symfony\.com$ }
+        - { path: ^/admin, roles: ROLE_USER_METHOD, methods: [POST, PUT] }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+```
+
+http://symfony.com/doc/current/security/access_control.html
+
+
+Roles
+-----
+Les roles permettent à symfony  de tagger des utilisateurs sur ce qu'ils peuvent ou non accéder. Ces roles peuvent être hiérarchisés :
+```
+security:
+    # ...
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+```
+https://symfony.com/doc/current/security.html#roles
+
+
+Exo 9 
+------
+Nous allons débuter par la partie authentification en créant un formulaire de login qui va permettre de se connecter 
+et pour les identifiants nous allons utiliser in_memory.
+Tester le bon fonctionnement de l'access_controls sur toutes les pages admin 
+https://symfony.com/doc/3.4/security.html
+
+
+Form_login
+-----
+
+Nous n'allons pas développer la partie form_login ici mais si vous voulez aller plus loin vous pouvez utiliser ces liens : 
+
+- [Entity provider](https://symfony.com/doc/3.4/security/entity_provider.html)
+- [Formulaire d'inscription](http://symfony.com/doc/3.4/doctrine/registration_form.html)
+- [Login form](http://symfony.com/doc/3.4/doctrine/registration_form.html)
+
+Comme vous le voyez il faut paramétrer un tas de choses pour que ce soit fonctionnel mais vous aurez la main sur tout le processus de security.
+
+Exo 10
+-----
+Mais si vous voulez laisser un bundle tier s'occuper de tout ce processus il y a [FOSUserBundle]() qui est le plus répandu.
+Il est très complet mais forcément moins de flexibilité que si vous gérez tout le process de security.
+Nous allons mettre en place un nouveau bundle : [FOSUserBundle](http://symfony.com/doc/current/bundles/FOSUserBundle/index.html).
+Overridez également le formulaire de login qui n'est pas au mieux niveau design.
+
+Vous voilà avec un beau backoffice sécurisé.
+
+On va enfin pouvoir se mettre réellement au TP : 
+ 
+ 
+TP
+======
+
+Présentation
+-------
+Nombre de TP : 5
+Date de rendu maximum : Tout le Lundi 21/05  
+Dépot par mail sur moshi@moshi.fr les répertoires app/ src/ et web/ si vous y avez touché (les zip passent pas sur mon gmail apparement, vous pouvez m'envoyer l'url du projet ou un wetransfer)
+Critères de notations : Je noterais le code source (php et JS si besoin) seulement ; aucunement le design.
+Vous devez réaliser un site vitrine pour le jeu "Tu préfères" : Deux choix s'offrent à vous cliquez pour choisir votre préféré.
+
+Notation
+-------
+
+Ce site disposera de : 
+- 5 pages 
+    - Homepage avec :
+     - **3** une section "Tu préfères" avec deux choix cliquables random (sans notion de catégories) au clic on comptabilise le vote et on renvoie vers la Homepage avec de nouveaux choix avec un message "Votre vote a bien été pris en compte"
+     - **3** un panneau de login (si déjà loggé on affiche le pseudo et un bouton de déconnexion et ses 5 derniers votes)
+     - **1** les 10 derniers votes de tout le monde
+    - **1** Présentation : avec un texte lorem non dynamique
+    - **3** Recherche : Recherche dans les news 
+    - **3** News : page de news avec détails (avec slug dans l'url et non id) et bouton retour 
+    - Tops par catégories
+        - **3** Reprendre la liste des catégories et afficher le vainqueur de la catégorie.
+        - **3** Au clic sur une catégorie on a accès (toujours avec un slug et non id) au top par catégorie : une section "Tu préfères" avec deux choix randoms mais de la catégorie sélectionnée.
+
+Les urls devront être SEO friendly et sans GET parameters
+Le backoffice vous est fourni, vous pouvez utiliser tous les bundles que vous souhaitez tant que le site est fonctionnel.
+ 
+ 
+   
+ 
+ 
