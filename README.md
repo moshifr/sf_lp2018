@@ -887,7 +887,7 @@ Tips : https://symfony.com/doc/3.4/doctrine.html#querying-for-objects
 - A la soumission on va récupérer $form->getData() qui sera notre $_POST
 - Pour récupérer la variable $word et utiliser la méthode du repository fraichement créée.
 - Pour finalement afficher tout le contenu dans une page de listing.
-
+[Corrigé](https://github.com/moshifr/sf_lp2018/commit/870a1d51b5305350b3401ebb348453c0c546d327)
 
 Security 
 ========
@@ -1017,6 +1017,9 @@ https://symfony.com/doc/current/security.html#roles
 
 Exo 9 
 ------
+
+[Corrigé](https://github.com/moshifr/sf_lp2018/commit/870a1d51b5305350b3401ebb348453c0c546d327)
+
 Nous allons débuter par la partie authentification en créant un formulaire de login qui va permettre de se connecter 
 et pour les identifiants nous allons utiliser in_memory.
 
@@ -1037,7 +1040,7 @@ Comme vous le voyez il faut paramétrer un tas de choses pour que ce soit foncti
 
 Exo 10
 -----
-Mais si vous voulez laisser un bundle tier s'occuper de tout ce processus il y a [FOSUserBundle]() qui est le plus répandu.
+Mais si vous voulez laisser un bundle tier s'occuper de tout ce processus il y a [FOSUserBundle](http://symfony.com/doc/current/bundles/FOSUserBundle/index.html) qui est le plus répandu.
 
 Il est très complet mais forcément moins de flexibilité que si vous gérez tout le process de security.
 
