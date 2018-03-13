@@ -63,3 +63,30 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+        post_image:
+            uri_prefix: /uploads
+            upload_destination: '%kernel.project_dir%/web/uploads'
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true
+easy_admin:
+    site_name: 'toto'
+    design:
+        brand_color: 'red'
+    entities:
+        Post:
+          class: AppBundle\Entity\Post
+          list:
+            fields:
+              - title
+              - {property: 'imageName', type: 'image', base_path: '/uploads/'}
+              - enable
+          form:
+            fields:
+              - { property: 'title', type: 'textarea'}
+              - { property: 'photo', type: 'vich_image', data_class: null}
+        PostCategory:
+          class: AppBundle\Entity\PostCategory

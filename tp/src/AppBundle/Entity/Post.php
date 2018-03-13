@@ -6,11 +6,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * Post
  *
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
+ * @Vich\Uploadable
  */
 class Post
 {
@@ -61,15 +65,36 @@ class Post
     private $enable;
 
     /**
-     * @var string
+     * @var File
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      * @Assert\File(mimeTypes={ "image/jpeg", "image/png", "image/gif" })
+     * @Vich\UploadableField(mapping="post_image", fileNameProperty="imageName")
      *
      */
     private $photo;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $imageName;
 
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+
+    public function __construct()
+    {
+        $this->title = str_repeat("toto ", 20);
+        $this->dateCreated = new \Datetime();
+    }
 
     /**
      * Get id
@@ -207,14 +232,18 @@ class Post
     /**
      * Set photo
      *
-     * @param string $photo
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $photo
      *
      * @return Post
      */
-    public function setPhoto($photo)
+    public function setPhoto(?File $photo)
     {
         $this->photo = $photo;
-
+        if (null !== $photo) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
         return $this;
     }
 
@@ -226,5 +255,77 @@ class Post
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    /**
+     * Set imageName
+     *
+     * @param string $imageName
+     *
+     * @return Post
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Set imageSize
+     *
+     * @param integer $imageSize
+     *
+     * @return Post
+     */
+    public function setImageSize($imageSize)
+    {
+        $this->imageSize = $imageSize;
+
+        return $this;
+    }
+
+    /**
+     * Get imageSize
+     *
+     * @return integer
+     */
+    public function getImageSize()
+    {
+        return $this->imageSize;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Post
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

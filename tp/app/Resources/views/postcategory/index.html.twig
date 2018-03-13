@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Postcategories list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for postCategory in postCategories %}
+            <tr>
+                <td><a href="{{ path('admin_postcategory_show', { 'id': postCategory.id }) }}">{{ postCategory.id }}</a></td>
+                <td>{{ postCategory.title }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_postcategory_show', { 'id': postCategory.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_postcategory_edit', { 'id': postCategory.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_postcategory_new') }}">Create a new postCategory</a>
+        </li>
+    </ul>
+{% endblock %}

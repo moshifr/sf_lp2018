@@ -1,0 +1,5 @@
+{
+    "require": {
+        "vich/uploader-bundle": "^1.8"
+    }
+}
