@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
               integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
               crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/layout.css') }}">
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
@@ -20,6 +21,15 @@
     {'route': app.request.attributes.get('_route')}
     )) }}
 
+    <div class="container">
+    {% if app.user %}
+        <div class="float-right">
+        <i class="fa fa-user"></i> Utilisateur : {{ app.user.username }}
+
+            {% if is_granted('ROLE_SUPER_ADMIN') %}TOP{% endif %}
+        </div>
+    {% endif  %}
+    </div>
 {% endblock %}
 <div class="container">
     {% for label, messages in app.flashes %}

@@ -33,6 +33,36 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+    /**
+     * @Route("/search", name="searchhp", defaults={"word" = false})
+     * @Route("/search/{word}", name="search")
+     */
+    public function searchAction(Request $request, $word)
+    {
+        $news = [];
+
+        if($word){
+            $news = $this->getDoctrine()->getRepository('AppBundle:Post')->search( $word );
+        }
+        $searchForm = $this->createFormBuilder()
+            ->add('word', TextType::class, ['label' => 'Recherche'])
+            ->add('submit', SubmitType::class, ['label' => 'Envoyer'])
+        ->getForm();
+
+
+        $searchForm->handleRequest($request);
+        if($searchForm->isSubmitted() && $searchForm->isValid()){
+            $data = $searchForm->getData();
+            $news = $this->getDoctrine()->getRepository('AppBundle:Post')->search( $data['word'] );
+        }
+
+        // replace this example code with whatever you need
+        return $this->render('default/search.html.twig', [
+            'news' => $news,
+            'form' => $searchForm->createView(),
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
 
     /**
      * @Route("/time/now", name="time_index")
