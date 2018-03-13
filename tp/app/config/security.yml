@@ -5,14 +5,19 @@ security:
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
-
+            memory:
+              users:
+                admin: {password: adminpass, roles: 'ROLE_ADMIN'}
+security:
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        http_basic:
+            pattern: ^/
+            anonymous: ~
+            http_basic: ~
         main:
             anonymous: ~
             # activate different ways to authenticate

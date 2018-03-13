@@ -12,18 +12,13 @@
 </head>
 <body>
 {% block menu %}
-    <div class="container">
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link {% if time is defined %}active{% endif %}" href="{{ url('time_index') }}">Time index</a></li>
-            {% for mycolor in ['red', 'blue', 'pink', 'violet', 'salmon'] %}
-                <li class="nav-item">
-                    <a class="nav-link {% if color is defined and color == mycolor %}active{% endif %}" href="{{ url('color_index', {'color': mycolor}) }}">
-                        Color {{ mycolor }}</a>
-                </li>
-            {% endfor %}
 
-        </ul>
-    </div>
+   {# {% include 'menu.html.twig' %} #}
+
+    {{ render(controller(
+    'AppBundle\\Controller\\DefaultController::getMenuAction',
+    {'route': app.request.attributes.get('_route')}
+    )) }}
 
 {% endblock %}
 <div class="container">

@@ -60,6 +60,15 @@ class Post
      */
     private $enable;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/png", "image/gif" })
+     *
+     */
+    private $photo;
+
 
 
     /**
@@ -194,4 +203,28 @@ class Post
     }
 
 
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Post
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
 }

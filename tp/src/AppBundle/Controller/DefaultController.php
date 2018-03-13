@@ -17,6 +17,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+
+    public function getMenuAction($route)
+    {
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+       return $this->render('menu.html.twig', ['posts' => $posts, 'route' => $route]);
+    }
     /**
      * @Route("/", name="homepage")
      */
