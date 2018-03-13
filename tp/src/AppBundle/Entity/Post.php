@@ -96,6 +96,10 @@ class Post
         $this->dateCreated = new \Datetime();
     }
 
+    public function renameFile(){
+        return 'post_'.$this->id;
+    }
+
     /**
      * Get id
      *

@@ -25,9 +25,9 @@ class PostType extends AbstractType
             ->add('content')
             ->add('enable')
             ->add('category')
-            ->add('photo', VichFileType::class, [ 'required' => false,
+            /*->add('photo', VichFileType::class, [ 'required' => false,
 
-               ])
+               ])*/
             ->add('submit', SubmitType::class, ['label' => 'Valider']);
     }
     
