@@ -871,6 +871,7 @@ Exos 7
 - Tester le fonctionnement 
 - Mettre les liens dans le menu pour aller sur le listing post et listing postcategory ; mettre en actif si url courante
 - Ajouter un champs image à Post ; ce champs sera un champs d'upload 
+- [Corrigé](https://github.com/moshifr/sf_lp2018/commit/6d0e58c6fe0ae0782d3f12bbb815baf2c2811ee2)
 - Mettre en place l'upload Tips : utiliser [VichUploaderBundle](https://github.com/dustin10/VichUploaderBundle) ou manuellement [FileUpload](https://symfony.com/doc/3.4/controller/upload_file.html)
 - Tester [EasyAdminBundle](https://symfony.com/doc/master/bundles/EasyAdminBundle/index.html)
 
