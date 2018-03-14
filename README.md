@@ -1100,8 +1100,8 @@ Pour lancer le serveur :
 - bin/console server:run 
 
 - Accéder à locahost:8000/login
-login : tototiti
-Mot de passe : tototiti
+login : admin
+Mot de passe : admin
 
    
  
