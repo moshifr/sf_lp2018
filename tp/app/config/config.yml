@@ -88,11 +88,18 @@ vich_uploader:
             delete_on_update: true
             delete_on_remove: true
 easy_admin:
-    site_name: 'toto'
+    site_name: 'Admin - Tu préfères'
     design:
-        brand_color: 'red'
+        brand_color: '#146F88'
+        menu:
+
+          - {entity: 'Item', 'label': 'Proposition'}
+          - {entity: 'ItemCategory', label: 'Catégorie'}
+          - {entity: 'Post', label: 'Blog'}
+          - {entity: 'User', label: 'Utilisateurs', icon: 'user'}
+          - {label: 'Voir la page accueil', target: '_blank', route: 'homepage'}
     entities:
-        Propositions:
+        Item:
           class: AppBundle\Entity\Item
           form:
             fields:
@@ -127,12 +134,15 @@ easy_admin:
           list:
             fields:
               - title
+              - slug
               - {property: 'imageName', type: 'image', base_path: '/uploads/'}
               - enable
           form:
             fields:
-              - { property: 'title', type: 'textarea'}
+              - title
+              - slug
               - { property: 'photo', type: 'vich_image', data_class: null}
+              - content
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'

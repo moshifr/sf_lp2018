@@ -1096,6 +1096,9 @@ Installation
 - composer.phar update 
 - ou composer update
 
+Pour mettre en place les assets : 
+- bin/console asset:install --symlink
+
 Pour lancer le serveur : 
 - bin/console server:run 
 
