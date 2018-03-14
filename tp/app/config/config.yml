@@ -77,11 +77,48 @@ vich_uploader:
             inject_on_load: true
             delete_on_update: true
             delete_on_remove: true
+
+        item_image:
+
+            uri_prefix: /uploads
+            upload_destination: '%kernel.project_dir%/web'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true
 easy_admin:
     site_name: 'toto'
     design:
         brand_color: 'red'
     entities:
+        Propositions:
+          class: AppBundle\Entity\Item
+          form:
+            fields:
+              - titre
+              - {property: 'image', type: 'file', base_path: '/uploads/'}
+              - category
+              - url_video
+              - enable
+          list:
+            fields:
+              - titre
+              - category
+              - { property: 'imageName', type: 'image', data_class: null}
+              - enable
+        ItemCategory:
+          class: AppBundle\Entity\ItemCategory
+        User:
+          class: AppBundle\Entity\User
+          form:
+            fields:
+              - username
+              - username_canonical
+              - email
+              - email_canonical
+              - password
+          #    - {property: 'roles', type: 'choice', choices: [ 'ROLE_USER', 'ROLE_ADMIN']}
         Post:
           class: AppBundle\Entity\Post
           list:
@@ -93,8 +130,7 @@ easy_admin:
             fields:
               - { property: 'title', type: 'textarea'}
               - { property: 'photo', type: 'vich_image', data_class: null}
-        PostCategory:
-          class: AppBundle\Entity\PostCategory
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main

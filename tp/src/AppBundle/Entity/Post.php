@@ -36,12 +36,6 @@ class Post
      */
     private $title;
 
-    /**
-     * @var $category PostCategory
-     *
-     * @ORM\ManyToOne(targetEntity="PostCategory")
-     */
-    private $category;
 
     /**
      * @var \DateTime

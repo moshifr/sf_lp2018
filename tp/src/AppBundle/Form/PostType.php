@@ -24,7 +24,6 @@ class PostType extends AbstractType
             ->add('dateCreated', DateTimeType::class, ['date_widget' => 'single_text'])
             ->add('content')
             ->add('enable')
-            ->add('category')
             /*->add('photo', VichFileType::class, [ 'required' => false,
 
                ])*/
