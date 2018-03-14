@@ -20,7 +20,7 @@ framework:
     csrf_protection: ~
     validation: { enable_annotations: true }
     #serializer: { enable_annotations: true }
-    default_locale: '%locale%'
+    default_locale: fr
     trusted_hosts: ~
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
@@ -95,3 +95,12 @@ easy_admin:
               - { property: 'photo', type: 'vich_image', data_class: null}
         PostCategory:
           class: AppBundle\Entity\PostCategory
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    service:
+        mailer: fos_user.mailer.twig_swift
+    from_email:
+        address:        noreply@example.com
+        sender_name:    Demo App
+    user_class: AppBundle\Entity\User

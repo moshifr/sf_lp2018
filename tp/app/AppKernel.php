@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
 
         ];
 
