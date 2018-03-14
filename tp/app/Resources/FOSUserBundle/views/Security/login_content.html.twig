@@ -4,9 +4,9 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<div class="container">
+<div class="container valign">
     <div class="row">
-        <div class="col-md-6 col-md-push-2">
+        <div class="col-md-6 offset-md-2">
     <form action="{{ path("fos_user_security_check") }}" method="post">
         <h1 class="text-center">Admin</h1>
         {% if csrf_token %}

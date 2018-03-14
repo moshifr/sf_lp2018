@@ -10,8 +10,8 @@ parameters:
     photo_directory: '%kernel.project_dir%/web/uploads'
 
 framework:
-    #esi: ~
-    translator: { fallbacks: ['fr'] }
+    esi: ~
+    translator: ~
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -81,7 +81,7 @@ vich_uploader:
         item_image:
 
             uri_prefix: /uploads
-            upload_destination: '%kernel.project_dir%/web'
+            upload_destination: '%kernel.project_dir%/web/uploads/'
             namer: vich_uploader.namer_uniqid
 
             inject_on_load: true
@@ -97,7 +97,7 @@ easy_admin:
           form:
             fields:
               - titre
-              - {property: 'image', type: 'file', base_path: '/uploads/'}
+              - {property: 'image', type: 'vich_image', data_class: null}
               - category
               - url_video
               - enable
@@ -105,7 +105,7 @@ easy_admin:
             fields:
               - titre
               - category
-              - { property: 'imageName', type: 'image', data_class: null}
+              - {property: 'imageName', type: 'image', base_path: '/uploads/'}
               - enable
         ItemCategory:
           class: AppBundle\Entity\ItemCategory
@@ -114,10 +114,13 @@ easy_admin:
           form:
             fields:
               - username
-              - username_canonical
               - email
-              - email_canonical
-              - password
+              - enabled
+              - lastLogin
+              # if administrators are allowed to edit users' passwords and roles, add this:
+              - { property: 'plainPassword', type: 'text', type_options: { required: false } }
+              - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+
           #    - {property: 'roles', type: 'choice', choices: [ 'ROLE_USER', 'ROLE_ADMIN']}
         Post:
           class: AppBundle\Entity\Post
