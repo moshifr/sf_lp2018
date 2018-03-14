@@ -1088,7 +1088,21 @@ Les urls devront être SEO friendly et sans GET parameters.
 
 Le backoffice vous est fourni, vous pouvez utiliser tous les bundles que vous souhaitez tant que le site est fonctionnel.
  
- 
+Installation
+---------
+
+- Récupérer le zip ou le projet
+- Se placer sur le répertoire TP
+- composer.phar update 
+- ou composer update
+
+Pour lancer le serveur : 
+- bin/console server:run 
+
+- Accéder à locahost:8000/login
+login : tototiti
+Mot de passe : tototiti
+
    
  
  
