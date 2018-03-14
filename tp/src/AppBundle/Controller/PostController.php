@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * Post controller.
  *
- * @Route("admin/post")
+ * @Route("admin_old/post")
  */
 class PostController extends Controller
 {
