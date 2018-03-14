@@ -1048,7 +1048,7 @@ Nous allons mettre en place un nouveau bundle : [FOSUserBundle](http://symfony.c
 
 Overridez également le formulaire de login qui n'est pas au mieux niveau design.
 
-Vous voilà avec un beau backoffice sécurisé.
+Vous voilà avec un beau backoffice sécurisé. [Corrigé](https://github.com/moshifr/sf_lp2018/tree/12fbea574af3cbde45c9a9c006684b92b302f1d6)
 
 On va enfin pouvoir se mettre réellement au TP : 
  
