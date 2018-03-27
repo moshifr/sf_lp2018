@@ -81,6 +81,21 @@ class Item
     private $category;
 
     /**
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="proposals")
+     */
+    private $users;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbVote", type="integer", nullable=true)
+     */
+    private $nbVote;
+
+
+
+    /**
      * Get id
      *
      * @return int
@@ -309,5 +324,70 @@ class Item
     public function getCategory()
     {
         return $this->category;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set nbVote
+     *
+     * @param integer $nbVote
+     *
+     * @return Item
+     */
+    public function setNbVote($nbVote)
+    {
+        $this->nbVote = $nbVote;
+
+        return $this;
+    }
+
+    /**
+     * Get nbVote
+     *
+     * @return integer
+     */
+    public function getNbVote()
+    {
+        return $this->nbVote;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Item
+     */
+    public function addUser(\AppBundle\Entity\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeUser(\AppBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
